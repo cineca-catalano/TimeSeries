@@ -1,0 +1,22 @@
+{
+  "name": "@steve.gui/time_series",
+  "version": "1.0.0",
+  "description": "Prova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cineca-catalano/TimeSeries.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cineca-catalano/TimeSeries/issues"
+  },
+  "homepage": "https://github.com/cineca-catalano/TimeSeries#readme",
+  "dependencies": {
+    "mongodb": "^2.1.21"
+  }
+}

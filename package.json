@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/cineca-catalano/TimeSeries#readme",
   "dependencies": {
+    "joi": "^9.0.0-3",
     "mongodb": "^2.1.21"
+  },
+  "devDependencies": {
+    "lab": "^10.7.1",
+    "mongo-clean": "^1.2.1"
   }
 }

@@ -1,19 +1,24 @@
 'use strict'
 
-var MongoClient = require('mongodb').MongoClient;
+
 var Joi = require('joi');
 
-var push=function(item, cb){
+var push=function(collection,item, cb){
 
   var schema = Joi.object().keys({
       type: Joi.string().alphanum().required(),
       content: Joi.string().alphanum().required(),
       author: Joi.string().alphanum().required()
   });
-  console.log('qui');
+
   Joi.validate(item, schema, function (err, value) {
-    monogoOperate((error,collection)=>{
-      if(error!=undefined){
+    if(err){
+      console.log("errpre "+err);
+      return;
+    }
+
+
+      if(err!=undefined){
         console.log(error);
         return;
       }
@@ -24,18 +29,15 @@ var push=function(item, cb){
           cb();
           }
         }
-    });
+
 
   });
-
-
 
 }
 
 
-var  fetch=function(cb){
-
-  monogoOperate((error,collection)=>{
+var  fetch=function(collection,cb){
+    console.log('quo');
     var retArray = collection.find().toArray((err, list) =>{
       if(cb){
           //console.log(list);
@@ -43,27 +45,10 @@ var  fetch=function(cb){
       }
     });
 
-
-})
-
-
 }
 
 
-var monogoOperate=function(callBack){
-  MongoClient.connect("mongodb://localhost:27017/timeSeries", function(err, db) {
-    if(!err) {
-      console.log("We are connected");
-      db.createCollection('timeseries', (err,collection)=>{
 
-            callBack(err,collection);
-        });
-      }else{
-          callBack(err);
-          return;
-        }
-    });
-};
 
 
 module.exports={push:push,fetch:fetch};

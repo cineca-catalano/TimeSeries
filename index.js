@@ -37,8 +37,8 @@ var push=function(collection,item, cb){
 
 
 var  fetch=function(collection,cb){
-    console.log('quo');
-    var retArray = collection.find().toArray((err, list) =>{
+
+    collection.find().toArray((err, list) =>{
       if(cb){
           //console.log(list);
           cb(null,list);

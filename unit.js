@@ -12,20 +12,22 @@ lab.test('ok',(done)=>{
     if(!err) {
       console.log("We are connected");
       db.createCollection('timeseries', (err,collection)=>{
+
         myFunz.push(collection,{
           'type':'tipo',
           'content':'contenuto',
           'author':'author'
         });
 
-        myFunz.fetch(collection,(array)=>{
+        myFunz.fetch(collection,(err,array)=>{
           for (elem of array) {
               console.log(elem);
           }
+          db.close();
+          done();
 
         })
-            db.close();
-            done();
+
         });
       }else{
         console.log('qui1');
